@@ -44,7 +44,7 @@ public class ShopController {
             @ApiResponse(responseCode = "404", description = "Shop list failed",
                     content = @Content(schema = @Schema(implementation = Response.class)))
     })
-    @GetMapping(value = "/bikes/shops", produces = "application/json")
+    @GetMapping(value = "/shops", produces = "application/json")
     public ResponseEntity<Set<Shop>> getShops() {
 
         logger.info("Init getShops");
@@ -64,7 +64,7 @@ public class ShopController {
             @ApiResponse(responseCode = "404", description = "Shop doesn't exists",
                     content = @Content(schema = @Schema(implementation = Response.class)))
     })
-    @GetMapping(value = "/bikes/shops/{id}", produces = "application/json")
+    @GetMapping(value = "/shops/{id}", produces = "application/json")
     public ResponseEntity<Shop> getShopById(@PathVariable long id) {
 
         logger.info("Init getShopById");
@@ -85,7 +85,7 @@ public class ShopController {
             @ApiResponse(responseCode = "404", description = "Shop couldn't be added",
                     content = @Content(schema = @Schema(implementation = Response.class)))
     })
-    @PostMapping(value= "/bikes/shops", produces = "application/json", consumes = "application/json")
+    @PostMapping(value= "/shops", produces = "application/json", consumes = "application/json")
     public ResponseEntity<Shop> addShop(@RequestBody Shop shop) {
 
         logger.info("Init addShop");
@@ -105,7 +105,7 @@ public class ShopController {
             @ApiResponse(responseCode = "404", description = "Shop doesn't exist",
                     content = @Content(schema = @Schema(implementation = Response.class)))
     })
-    @PutMapping(value = "/bikes/shops/{id}", produces = "application/json", consumes = "application/json")
+    @PutMapping(value = "/shops/{id}", produces = "application/json", consumes = "application/json")
     public ResponseEntity<Shop> modifyShop(@PathVariable long id, @RequestBody ShopDTO shopDTO) {
 
         logger.info("Init modifyShop");
@@ -125,7 +125,7 @@ public class ShopController {
             @ApiResponse(responseCode = "404", description = "Shop doesn't exist",
                     content = @Content(schema = @Schema(implementation = Response.class)))
     })
-    @DeleteMapping(value = "/bikes/shops/{id}")
+    @DeleteMapping(value = "/shops/{id}")
     public ResponseEntity<Response> deleteShop(@PathVariable long id) {
 
         logger.info("Init deleteShop");

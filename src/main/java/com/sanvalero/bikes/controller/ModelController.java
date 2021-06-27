@@ -44,7 +44,7 @@ public class ModelController {
             @ApiResponse(responseCode = "404", description = "Models list failed",
                     content = @Content(schema = @Schema(implementation = Response.class)))
     })
-    @GetMapping(value = "/bikes/models", produces = "application/json")
+    @GetMapping(value = "/models", produces = "application/json")
     public ResponseEntity<Set<Model>> getModels() {
 
         logger.info("Init getModels");
@@ -64,7 +64,7 @@ public class ModelController {
             @ApiResponse(responseCode = "404", description = "Model doesn't exist",
                     content = @Content(schema = @Schema(implementation = Response.class)))
     })
-    @GetMapping(value = "/bikes/models/{id}", produces = "application/json")
+    @GetMapping(value = "/models/{id}", produces = "application/json")
     public ResponseEntity<Model> getModelById(@PathVariable long id) {
 
         logger.info("Init getModelById");
@@ -85,7 +85,7 @@ public class ModelController {
             @ApiResponse(responseCode = "404", description = "Model couldn't be added",
                     content = @Content(schema = @Schema(implementation = Response.class)))
     })
-    @PostMapping(value = "/bikes/brands/{id}/model", produces = "application/json", consumes = "application/json")
+    @PostMapping(value = "/brands/{id}/model", produces = "application/json", consumes = "application/json")
     public ResponseEntity<Model> addModel(@PathVariable long id, @RequestBody ModelDTO modelDTO) {
 
         logger.info("Init addModel");
@@ -105,7 +105,7 @@ public class ModelController {
             @ApiResponse(responseCode = "404", description = "Model doesn't exist",
                     content = @Content(schema = @Schema(implementation = Response.class)))
     })
-    @PutMapping(value = "/bikes/models/{id}", produces = "application/json", consumes = "application/json")
+    @PutMapping(value = "/models/{id}", produces = "application/json", consumes = "application/json")
     public ResponseEntity<Model> modifyModel(@PathVariable long id, @RequestBody ModelDTO modelDTO) {
 
         logger.info("Init modifyModel");
@@ -125,7 +125,7 @@ public class ModelController {
             @ApiResponse(responseCode = "404", description = "Model doesn't exist",
                     content = @Content(schema = @Schema(implementation = Response.class)))
     })
-    @DeleteMapping("/bikes/models/{id}")
+    @DeleteMapping("/models/{id}")
     public ResponseEntity<Response> deleteModel(@PathVariable long id) {
 
         logger.info("Init deleteModel");

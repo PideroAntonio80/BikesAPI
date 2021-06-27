@@ -15,6 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -44,7 +45,7 @@ public class BrandController {
             @ApiResponse(responseCode = "404", description = "Brand list failed",
                     content = @Content(schema = @Schema(implementation = Response.class)))
     })
-    @GetMapping(value = "/bikes/brands", produces = "application/json")
+    @GetMapping(value = "/brands", produces = MediaType.APPLICATION_JSON_VALUE/*"application/json"*/)
     public ResponseEntity<Set<Brand>> getBrands() {
 
         logger.info("Init getBrands");
@@ -64,7 +65,7 @@ public class BrandController {
             @ApiResponse(responseCode = "404", description = "Brand doesn't exist",
                     content = @Content(schema = @Schema(implementation = Response.class)))
     })
-    @GetMapping(value = "/bikes/brands/{id}", produces = "application/json")
+    @GetMapping(value = "/brands/{id}", produces = "application/json")
     public ResponseEntity<Brand> getBrandById(@PathVariable long id) {
 
         logger.info("Init getBrandById");
@@ -85,7 +86,7 @@ public class BrandController {
             @ApiResponse(responseCode = "404", description = "Brand couldn't be added",
                     content = @Content(schema = @Schema(implementation = Response.class)))
     })
-    @PostMapping(value = "/bikes/shops/{id}/brand", produces = "application/json", consumes = "application/json")
+    @PostMapping(value = "/shops/{id}/brand", produces = "application/json", consumes = "application/json")
     public ResponseEntity<Brand> addBrand(@PathVariable long id, @RequestBody BrandDTO brandDTO) {
 
         logger.info("Init addBrand");
@@ -105,7 +106,7 @@ public class BrandController {
             @ApiResponse(responseCode = "404", description = "Brand doesn't exist",
                     content = @Content(schema = @Schema(implementation = Response.class)))
     })
-    @PutMapping(value = "/bikes/brands/{id}", produces = "application/json", consumes = "application/json")
+    @PutMapping(value = "/brands/{id}", produces = "application/json", consumes = "application/json")
     public ResponseEntity<Brand> modifyBrand(@PathVariable long id, @RequestBody BrandDTO brandDTO) {
 
         logger.info("Init modifyBrand");
@@ -125,7 +126,7 @@ public class BrandController {
             @ApiResponse(responseCode = "404", description = "Brand doesn't exist",
                     content = @Content(schema = @Schema(implementation = Response.class)))
     })
-    @DeleteMapping("/bikes/brands/{id}")
+    @DeleteMapping("/brands/{id}")
     public ResponseEntity<Response> deleteBrand(@PathVariable long id) {
 
         logger.info("Init deleteBrand");
